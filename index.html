@@ -1,0 +1,718 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Shivansh Shukla | Mutual Fund Distributor</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap"
+    />
+    <style>
+      :root {
+        --bg: #f6f2ea;
+        --surface: #fffdf8;
+        --text: #1b1f2a;
+        --muted: #5d6272;
+        --gold: #9a7424;
+        --line: #ddd3bf;
+        --navy: #0f1a30;
+        --c1: #9a7424;
+        --c2: #1b2b4d;
+        --c3: #2f7d6b;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0a1222;
+          --surface: #111c33;
+          --text: #efe7d4;
+          --muted: #9aa3b8;
+          --gold: #d4af5f;
+          --line: #243252;
+          --c1: #d4af5f;
+          --c2: #8fb0f0;
+          --c3: #5fc4a8;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, system-ui, sans-serif;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 600;
+        line-height: 1.15;
+        margin: 0;
+      }
+      nav {
+        position: sticky;
+        top: env(safe-area-inset-top, 0px);
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        z-index: 5;
+      }
+      nav .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        gap: 12px;
+        overflow-x: auto;
+      }
+      nav b {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 20px;
+        white-space: nowrap;
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 13px;
+        margin-left: 14px;
+        white-space: nowrap;
+      }
+      .eyebrow {
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: var(--gold);
+        font-weight: 500;
+      }
+      .hero {
+        padding: 70px 0 40px;
+        text-align: center;
+      }
+      h1 {
+        font-size: clamp(34px, 6vw, 56px);
+        margin: 14px 0;
+      }
+      .lead {
+        max-width: 600px;
+        margin: 0 auto 26px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 13px 26px;
+        border-radius: 8px;
+        background: var(--gold);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        border: 0;
+        cursor: pointer;
+        font-family: inherit;
+      }
+      section {
+        padding: 46px 0;
+      }
+      h2 {
+        font-size: clamp(28px, 4.5vw, 40px);
+        text-align: center;
+        margin-bottom: 12px;
+      }
+      .intro {
+        text-align: center;
+        color: var(--muted);
+        max-width: 620px;
+        margin: 0 auto 28px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+      .tile {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 22px;
+      }
+      .tile h3 {
+        font-size: 21px;
+        margin-bottom: 6px;
+      }
+      .tile p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .num {
+        color: var(--gold);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 28px;
+      }
+      .about {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 28px;
+        align-items: center;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 26px;
+      }
+      .photo {
+        aspect-ratio: 1;
+        border-radius: 12px;
+        background: var(--line);
+        display: grid;
+        place-items: center;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+        overflow: hidden;
+      }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      @media (max-width: 600px) {
+        .about {
+          grid-template-columns: 1fr;
+        }
+        .photo {
+          max-width: 160px;
+        }
+      }
+      .calc {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 24px;
+      }
+      .ctl {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+      label {
+        font-size: 13px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+      }
+      label b {
+        color: var(--text);
+        font-weight: 500;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--gold);
+      }
+      svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .res {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .res div {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .res strong {
+        display: block;
+        font-size: 20px;
+        color: var(--text);
+        font-family: "Cormorant Garamond", serif;
+      }
+      .note {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 14px;
+      }
+      .legend span {
+        display: inline-block;
+        margin-right: 14px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .legend i {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+      .tile {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .tile:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
+      }
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+      #approach .tile,
+      #learn .tile {
+        animation: drift 5s ease-in-out infinite;
+      }
+      #approach .tile:nth-child(2),
+      #learn .tile:nth-child(2) {
+        animation-delay: -1.3s;
+      }
+      #approach .tile:nth-child(3),
+      #learn .tile:nth-child(3) {
+        animation-delay: -2.6s;
+      }
+      #approach .tile:nth-child(4),
+      #learn .tile:nth-child(4) {
+        animation-delay: -3.9s;
+      }
+      #approach .tile:hover,
+      #learn .tile:hover {
+        animation-play-state: paused;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #approach .tile,
+        #learn .tile {
+          animation: none;
+        }
+        .tile {
+          transition: none;
+        }
+        .tile:hover {
+          transform: none;
+        }
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 30px 0 40px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      footer p {
+        margin: 0 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="wrap">
+        <b>Shivansh Shukla</b>
+        <div>
+          <a href="#about">About</a><a href="#approach">My approach</a
+          ><a href="#learn">Learn</a><a href="#calc">Calculator</a
+          ><a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+    <div class="wrap">
+      <header class="hero">
+        <div class="eyebrow">Goal-based investing</div>
+        <h1>Invest for your goals,<br />with a clear plan</h1>
+        <p class="lead">
+          I help business owners and professionals decide where their money
+          should sit, in simple language, so each rupee has a purpose.
+        </p>
+        <a class="btn" href="#calc">Try the calculator</a>
+      </header>
+
+      <section id="about">
+        <h2>About me</h2>
+        <p class="intro">Who I am and how I work.</p>
+        <div class="about">
+          <div class="photo">
+            <img
+              src="photo.jpg"
+              alt="Shivansh Shukla"
+              onerror="this.parentNode.textContent = 'Your photo here'"
+            />
+          </div>
+          <div>
+            <h3>Shivansh Shukla</h3>
+            <p style="color: var(--muted); margin: 8px 0">
+              AMFI-registered Mutual Fund Distributor · ARN-372052 ·
+              NISM-certified
+            </p>
+            <p style="margin: 0">
+              I help individuals, families and business owners invest with a
+              plan instead of guesswork. I start by understanding what you are
+              saving for and by when, then suggest an allocation that suits your
+              timeline and your comfort with risk. Every recommendation is
+              explained in plain language, including the costs. I believe good
+              investing comes down to clarity, patience and regular reviews, and
+              I focus on giving each client proper attention.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="approach">
+        <h2>My approach</h2>
+        <p class="intro">A simple four-step process, repeated every year.</p>
+        <div class="grid">
+          <div class="tile">
+            <div class="num">1</div>
+            <h3>Understand your goals</h3>
+            <p>
+              Retirement, children's education, a home, a business exit. We
+              write down what, how much and by when.
+            </p>
+          </div>
+          <div class="tile">
+            <div class="num">2</div>
+            <h3>Plan the allocation</h3>
+            <p>
+              We decide how much goes to equity, debt, gold and global funds,
+              based on your time horizon and comfort with risk.
+            </p>
+          </div>
+          <div class="tile">
+            <div class="num">3</div>
+            <h3>Suggest suitable funds</h3>
+            <p>
+              I suggest funds that fit the plan, based on your goals, time
+              horizon and comfort with risk.
+            </p>
+          </div>
+          <div class="tile">
+            <div class="num">4</div>
+            <h3>Review regularly</h3>
+            <p>
+              A fixed review each year to check progress against your goals and
+              rebalance if needed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="learn">
+        <h2>How mutual funds work</h2>
+        <p class="intro">
+          Many investors put money into funds without knowing what happens next.
+          Here is the short version.
+        </p>
+        <div class="grid">
+          <div class="tile">
+            <h3>Pooling</h3>
+            <p>
+              Many investors put money into one fund. A fund manager invests
+              that pool in shares, bonds or other assets.
+            </p>
+          </div>
+          <div class="tile">
+            <h3>NAV</h3>
+            <p>
+              The Net Asset Value is the price of one unit. It changes every day
+              with the value of what the fund holds.
+            </p>
+          </div>
+          <div class="tile">
+            <h3>SIP</h3>
+            <p>
+              A Systematic Investment Plan invests a fixed amount every month,
+              so you do not need to time the market.
+            </p>
+          </div>
+          <div class="tile">
+            <h3>Costs</h3>
+            <p>
+              Every fund charges an expense ratio. Regular plans include
+              distributor commission. Direct plans do not. Ask about this before
+              investing.
+            </p>
+          </div>
+        </div>
+        <h2 style="margin-top: 40px">Why investors choose mutual funds</h2>
+        <div class="grid" style="margin-top: 20px">
+          <div class="tile">
+            <h3>Regulated</h3>
+            <p>
+              Funds operate under SEBI rules, with regular disclosure of
+              holdings and costs.
+            </p>
+          </div>
+          <div class="tile">
+            <h3>Diversified</h3>
+            <p>
+              One fund holds many securities, which spreads risk compared with a
+              few individual shares.
+            </p>
+          </div>
+          <div class="tile">
+            <h3>Flexible</h3>
+            <p>
+              Start with a modest SIP or a lump sum, and in most open-ended
+              funds you can redeem when you need to.
+            </p>
+          </div>
+          <div class="tile">
+            <h3>Not risk-free</h3>
+            <p>
+              Values rise and fall, and returns are not assured. Time horizon
+              and suitability matter more than any single fund.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="calc">
+        <h2>See how compounding works</h2>
+        <p class="intro">
+          Move the sliders. The chart shows three illustrative return rates, not
+          predictions.
+        </p>
+        <div class="calc">
+          <div class="ctl">
+            <div>
+              <label>Lumpsum (one time, at start) <b id="vl"></b></label
+              ><input
+                id="lump"
+                type="range"
+                min="0"
+                max="10000000"
+                step="50000"
+                value="0"
+              />
+            </div>
+            <div>
+              <label>Monthly SIP <b id="vs"></b></label
+              ><input
+                id="sip"
+                type="range"
+                min="1000"
+                max="200000"
+                step="1000"
+                value="25000"
+              />
+            </div>
+            <div>
+              <label>Years <b id="vy"></b></label
+              ><input
+                id="yrs"
+                type="range"
+                min="1"
+                max="40"
+                step="1"
+                value="20"
+              />
+            </div>
+          </div>
+          <svg
+            id="chart"
+            viewBox="0 0 640 300"
+            role="img"
+            aria-label="SIP growth chart"
+          ></svg>
+          <div class="legend" id="lg"></div>
+          <div class="res" id="res"></div>
+          <p class="note">
+            Illustration only, using assumed annual returns of 8%, 10% and 12%
+            with monthly compounding. Actual mutual fund returns are not
+            guaranteed and may be lower or negative. Taxes, expense ratios and
+            exit loads are not included.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Get in touch</h2>
+        <p class="intro">
+          Have a question about your goals or about how mutual funds work? Write
+          to me and I will reply personally.
+        </p>
+        <div style="text-align: center">
+          <a class="btn" href="https://mail.google.com/mail/u/0/?ogbl#inbox">Email me</a>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        <p>
+          <strong>Shivansh Shukla</strong> · AMFI-Registered Mutual Fund
+          Distributor · ARN-372052 · Valid till DD/MM/YYYY
+        </p>
+        <p>
+          Mutual fund investments are subject to market risks. Read all scheme
+          related documents carefully. Past performance is not indicative of
+          future returns. Illustrations on this site are not forecasts.
+        </p>
+        <p>
+          As a distributor I may earn commission from fund houses on investments
+          made through me; details are available on request.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      var R = [0.08, 0.1, 0.12],
+        COL = ["--c2", "--c1", "--c3"];
+      var LS = 0;
+      function fv(p, r, m) {
+        var i = r / 12;
+        return (
+          LS * Math.pow(1 + i, m) + p * ((Math.pow(1 + i, m) - 1) / i) * (1 + i)
+        );
+      }
+      function inr(x) {
+        if (x >= 1e7) return "₹" + (x / 1e7).toFixed(2) + " Cr";
+        if (x >= 1e5) return "₹" + (x / 1e5).toFixed(2) + " L";
+        return "₹" + Math.round(x).toLocaleString("en-IN");
+      }
+      function css(v) {
+        return getComputedStyle(document.documentElement)
+          .getPropertyValue(v)
+          .trim();
+      }
+      function draw() {
+        var p = +document.getElementById("sip").value,
+          y = +document.getElementById("yrs").value;
+        LS = +document.getElementById("lump").value;
+        document.getElementById("vl").textContent = inr(LS);
+        document.getElementById("vs").textContent = inr(p);
+        document.getElementById("vy").textContent = y + " yrs";
+        var W = 640,
+          H = 300,
+          L = 56,
+          B = 30,
+          T = 14,
+          Rr = 14,
+          max = fv(p, R[2], y * 12),
+          s = "";
+        for (var g = 0; g <= 4; g++) {
+          var yy = T + ((H - T - B) * g) / 4;
+          s +=
+            '<line x1="' +
+            L +
+            '" x2="' +
+            (W - Rr) +
+            '" y1="' +
+            yy +
+            '" y2="' +
+            yy +
+            '" stroke="' +
+            css("--line") +
+            '"/><text x="' +
+            (L - 6) +
+            '" y="' +
+            (yy + 4) +
+            '" font-size="10" text-anchor="end" fill="' +
+            css("--muted") +
+            '">' +
+            inr(max * (1 - g / 4)) +
+            "</text>";
+        }
+        for (var t = 0; t <= 4; t++) {
+          var xx = L + ((W - L - Rr) * t) / 4;
+          s +=
+            '<text x="' +
+            xx +
+            '" y="' +
+            (H - 10) +
+            '" font-size="10" text-anchor="middle" fill="' +
+            css("--muted") +
+            '">' +
+            Math.round((y * t) / 4) +
+            "y</text>";
+        }
+        function pt(k, r) {
+          var a = [];
+          for (var j = 0; j <= y; j++) {
+            var v = k === "inv" ? p * 12 * j + LS : fv(p, r, j * 12);
+            a.push(
+              (L + ((W - L - Rr) * j) / y).toFixed(1) +
+                "," +
+                (T + (H - T - B) * (1 - v / max)).toFixed(1),
+            );
+          }
+          return a.join(" ");
+        }
+        s +=
+          '<polyline fill="none" stroke="' +
+          css("--muted") +
+          '" stroke-dasharray="4 4" stroke-width="2" points="' +
+          pt("inv") +
+          '"/>';
+        R.forEach(function (r, i) {
+          s +=
+            '<polyline fill="none" stroke="' +
+            css(COL[i]) +
+            '" stroke-width="2.5" points="' +
+            pt("v", r) +
+            '"/>';
+        });
+        document.getElementById("chart").innerHTML = s;
+        document.getElementById("lg").innerHTML =
+          '<span><i style="background:' +
+          css("--muted") +
+          '"></i>Amount you invest</span>' +
+          R.map(function (r, i) {
+            return (
+              '<span><i style="background:' +
+              css(COL[i]) +
+              '"></i>' +
+              r * 100 +
+              "% assumed</span>"
+            );
+          }).join("");
+        document.getElementById("res").innerHTML =
+          "<div>You invest<strong>" +
+          inr(p * 12 * y + LS) +
+          "</strong></div>" +
+          R.map(function (r) {
+            var v = fv(p, r, y * 12);
+            return (
+              "<div>At " +
+              r * 100 +
+              "% assumed<strong>" +
+              inr(v) +
+              "</strong>Growth " +
+              inr(v - p * 12 * y - LS) +
+              "</div>"
+            );
+          }).join("");
+      }
+      ["sip", "yrs", "lump"].forEach(function (id) {
+        document.getElementById(id).addEventListener("input", draw);
+      });
+      draw();
+    </script>
+  </body>
+</html>
